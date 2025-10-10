@@ -133,7 +133,7 @@
 	name = "Paladin"
 	tutorial = "A holy warrior. Where others of the clergy may have spent their free time studying scriptures, you have instead honed your skills with a blade."
 	outfit = /datum/outfit/job/roguetown/adventurer/paladin
-	traits_applied = list(TRAIT_MEDIUMARMOR)
+	traits_applied = list(TRAIT_HEAVYARMOR)
 	subclass_stats = list(
 		STATKEY_STR = 2,
 		STATKEY_WIL = 1,
