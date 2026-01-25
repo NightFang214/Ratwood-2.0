@@ -1,4 +1,4 @@
-GLOBAL_LIST_INIT(vanderlin_weather, list(PARTICLEWEATHER_RAIN))
+GLOBAL_LIST_INIT(vanderlin_weather, list(PARTICLEWEATHER_RAIN, PARTICLEWEATHER_BLOODRAIN, PARTICLEWEATHER_LEAVES))
 SUBSYSTEM_DEF(ParticleWeather)
 	name = "Particle Weather"
 	flags = SS_BACKGROUND
@@ -6,11 +6,16 @@ SUBSYSTEM_DEF(ParticleWeather)
 	runlevels = RUNLEVEL_GAME
 	var/list/elligble_weather = list()
 	var/datum/particle_weather/runningWeather
+	var/datum/weather_effect/weather_special_effect
 	// var/list/next_hit = list() //Used by barometers to know when the next storm is coming
 
 	var/particles/weather/particleEffect
 	var/obj/weatherEffect
 
+	var/list/turfs_to_process = list()
+	var/list/weathered_turfs = list()
+
+	var/datum/forecast/selected_forecast
 /datum/controller/subsystem/ParticleWeather/fire()
 	// process active weather
 	if(runningWeather)
@@ -30,9 +35,14 @@ SUBSYSTEM_DEF(ParticleWeather)
 		var/target_trait = initial(W.target_trait)
 
 		// any weather with a probability set may occur at random
-		if (probability && (target_trait in GLOB.vanderlin_weather)) //TODO VANDERLIN: Map trait this.
+		if (prob(probability) && (target_trait in GLOB.vanderlin_weather)) //TODO VANDERLIN: Map trait this.
 			LAZYINITLIST(elligble_weather)
 			elligble_weather[W] = probability
+	switch(SSmapping.config.map_name)
+		if("Rosewood")
+			selected_forecast = new /datum/forecast/rosewood()
+		else
+			selected_forecast = new /datum/forecast/vanderlin()
 	return ..()
 
 /datum/controller/subsystem/ParticleWeather/proc/run_weather(datum/particle_weather/weather_datum_type, force = 0, color)
@@ -93,3 +103,15 @@ SUBSYSTEM_DEF(ParticleWeather)
 	weatherEffect.particles = null
 	QDEL_NULL(runningWeather)
 	QDEL_NULL(particleEffect)
+
+/datum/controller/subsystem/ParticleWeather/proc/check_forecast(time_of_day)
+	if(GLOB.forecast)
+		GLOB.forecast = null
+		return
+	var/datum/particle_weather/weather = selected_forecast.pick_weather(time_of_day)
+	if(!weather)
+		return
+	if(runningWeather && runningWeather.target_trait == initial(weather.target_trait))
+		return
+	GLOB.forecast = initial(weather.forecast_tag)
+	run_weather(weather)

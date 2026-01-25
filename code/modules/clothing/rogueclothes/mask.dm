@@ -149,8 +149,6 @@
 
 
 
-
-
 /obj/item/clothing/mask/rogue/spectacles/golden/dropped(mob/user, slot)
 	..()
 	if(active_item)
@@ -167,6 +165,18 @@
 	if(isliving(crosser) && !obj_broken)
 		take_damage(11, BRUTE, "blunt", 1)
 	..()
+
+/obj/item/clothing/mask/rogue/spectacles/goggles
+	name = "sand goggles"
+	icon_state = "goggles_sandstorm"
+	desc = "A set of goggles of an older design, made to protect the wearer from sandstorms."
+	break_sound = "glassbreak"
+	attacked_sound = 'sound/combat/hits/onglass/glasshit.ogg'
+	max_integrity = 35
+	integrity_failure = 0.5
+	resistance_flags = FIRE_PROOF
+	body_parts_covered = EYES
+	anvilrepair = /datum/skill/craft/armorsmithing
 
 /obj/item/clothing/mask/rogue/equipped(mob/user, slot)
 	..()

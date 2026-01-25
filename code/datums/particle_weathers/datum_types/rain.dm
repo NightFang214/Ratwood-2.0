@@ -28,8 +28,9 @@
 	maxSeverityChange = 2
 	severitySteps = 5
 	immunity_type = TRAIT_RAINSTORM_IMMUNE
-	probability = 1
+	probability = 70
 	target_trait = PARTICLEWEATHER_RAIN
+	forecast_tag = "rain"
 
 //Makes you a little chilly
 /datum/particle_weather/rain_gentle/weather_act(mob/living/L)
@@ -52,8 +53,45 @@
 	maxSeverityChange = 50
 	severitySteps = 50
 	immunity_type = TRAIT_RAINSTORM_IMMUNE
-	probability = 1
+	probability = 40
 	target_trait = PARTICLEWEATHER_RAIN
+	forecast_tag = "rain"
+
+	COOLDOWN_DECLARE(thunder)
+
+/datum/particle_weather/rain_storm/tick()
+	if(!COOLDOWN_FINISHED(src, thunder))
+		return
+
+
+	var/lightning_strikes = 1
+	for(var/i = 1 to lightning_strikes)
+		var/atom/lightning_destination
+		if(prob(100))
+			var/list/viable_players = list()
+			for(var/client/client in GLOB.clients)
+				if(!isliving(client.mob))
+					continue
+				viable_players += client.mob
+			if(!viable_players.len)
+				return
+			lightning_destination = pick(viable_players)
+
+		if(lightning_destination)
+			var/list/turfs = list()
+			for(var/turf/open/turf in range(lightning_destination, 7))
+				if(!turf.outdoor_effect || turf.outdoor_effect.weatherproof)
+					continue
+				turfs |= turf
+			if(!length(turfs))
+				return
+			lightning_destination = pick(turfs)
+
+		else
+			lightning_destination = pick(SSParticleWeather.weathered_turfs)
+
+		new /obj/effect/temp_visual/lightning/storm(get_turf(lightning_destination))
+		COOLDOWN_START(src, thunder, rand(5, 40) * 1 SECONDS)
 
 //Makes you a bit chilly
 /datum/particle_weather/rain_storm/weather_act(mob/living/L)
@@ -61,3 +99,16 @@
 	L.adjust_fire_stacks(-100)
 	L.SoakMob(FULL_BODY)
 	wash_atom(L,CLEAN_STRONG)
+
+/obj/effect/temp_visual/lightning/storm
+	icon = 'icons/effects/32x200.dmi'
+
+	light_system = MOVABLE_LIGHT
+	light_color = COLOR_PALE_BLUE_GRAY
+	light_outer_range = 15
+	light_power = 25
+	duration = 12
+
+/obj/effect/temp_visual/lightning/storm/Initialize(mapload, list/flame_hit)
+	. = ..()
+	playsound(get_turf(src),'sound/weather/rain/thunder_1.ogg', 80, TRUE)

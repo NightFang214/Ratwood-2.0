@@ -18,6 +18,7 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	armor_class = ARMOR_CLASS_LIGHT
+	cold_protection = 10
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/councillor
 	color = "#646464"
@@ -152,7 +153,7 @@
 			H.update_icon()
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/otavan/Initialize()
-	. = ..()		
+	. = ..()
 	update_icon()
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/otavan/update_icon()
@@ -192,7 +193,7 @@
 			H.update_icon()
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/freifechter/Initialize()
-	. = ..()		
+	. = ..()
 	update_icon()
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/freifechter/update_icon()
@@ -203,7 +204,7 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
-	
+
 	if(get_altdetail_tag())
 		var/mutable_appearance/pic2 = mutable_appearance(icon(icon, "[icon_state][altdetail_tag]"))
 		pic2.appearance_flags = RESET_COLOR

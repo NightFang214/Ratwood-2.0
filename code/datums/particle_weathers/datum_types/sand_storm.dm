@@ -15,16 +15,18 @@
 	// Weather tuning
 	maxSpawning = 80
 	minSpawning = 20
-	wind        = 10
+	wind        = 20
 
+/particles/weather/sand/gentle
+	wind        = 5
 /datum/particle_weather/sand_gentle
 	name = "Sandstorm"
 	desc = "A dry wind kicks sand through the air."
-	particleEffectType = /particles/weather/sand
+	particleEffectType = /particles/weather/sand/gentle
 
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/sandstorm)
-
+	indoor_weather_sounds = list(/datum/looping_sound/wind)
 	minSeverity = 5
 	maxSeverity = 25
 	maxSeverityChange = 10
@@ -35,6 +37,11 @@
 	target_trait = PARTICLEWEATHER_SAND
 
 /datum/particle_weather/sand_gentle/weather_act(mob/living/L)
+	if(HAS_TRAIT(L, TRAIT_SANDSTORM_IMMUNE))
+		return
+	var/obj/item/I = L.get_item_by_slot(ITEM_SLOT_MASK)
+
+	if(I && istype(I, /obj/item/clothing/mask/rogue/spectacles/goggles))
 
 	if(!HAS_TRAIT(L, TRAIT_SANDSTORMED))
 		ADD_TRAIT(L, TRAIT_SANDSTORMED, TRAIT_GENERIC)
@@ -75,7 +82,7 @@
 
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/sandstorm)
-
+	indoor_weather_sounds = list(/datum/looping_sound/wind)
 	minSeverity = 40
 	maxSeverity = 100
 	maxSeverityChange = 50
@@ -86,7 +93,8 @@
 	target_trait = PARTICLEWEATHER_SAND
 
 /datum/particle_weather/sand_storm/weather_act(mob/living/L)
-
+	if(HAS_TRAIT(L, TRAIT_SANDSTORM_IMMUNE))
+		return
 	if(!HAS_TRAIT(L, TRAIT_SANDSTORMED))
 		ADD_TRAIT(L, TRAIT_SANDSTORMED, TRAIT_GENERIC)
 	// Heat + abrasion
@@ -110,7 +118,6 @@
 	else
 		stop_weather_sound_effect(L)
 		messagedMobs[L] = 0
-		message_admins("can't weather")
 		if(HAS_TRAIT(L, TRAIT_SANDSTORMED))
 			REMOVE_TRAIT(L, TRAIT_SANDSTORMED, TRAIT_GENERIC)
 

@@ -21,13 +21,14 @@
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/snow)
 
-	minSeverity = 1
-	maxSeverity = 10
+	minSeverity = 5
+	maxSeverity = 20
 	maxSeverityChange = 5
 	severitySteps = 5
 	immunity_type = TRAIT_SNOWSTORM_IMMUNE
-	probability = 1
+	probability = 15
 	target_trait = PARTICLEWEATHER_SNOW
+	forecast_tag = "snow"
 
 //Makes you a little chilly
 /datum/particle_weather/snow_gentle/weather_act(mob/living/L)
@@ -44,15 +45,20 @@
 
 	minSeverity = 40
 	maxSeverity = 100
+
+	weather_duration_lower = 4 MINUTES
+	weather_duration_upper = 10 MINUTES
+
 	maxSeverityChange = 50
 	severitySteps = 50
 	immunity_type = TRAIT_SNOWSTORM_IMMUNE
-	probability = 1
+	probability = 10
 	target_trait = PARTICLEWEATHER_SNOW
+	forecast_tag = "snow"
 
 //Makes you a lot little chilly
 /datum/particle_weather/snow_storm/weather_act(mob/living/L)
-	L.adjust_bodytemperature(-rand(5,15))
+	L.adjust_bodytemperature(-rand(10,25))
 
 /turf
 	var/turf_flags = TURF_EFFECT_AFFECTABLE

@@ -15,6 +15,7 @@
 	sewrepair = TRUE
 	unarmed_bonus = 1.1
 	color = "#66584c"
+	cold_protection = 3
 
 /obj/item/clothing/gloves/roguetown/leather/black
 	color = CLOTHING_BLACK
