@@ -18,7 +18,7 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/ingot/iron = 1,
 				/obj/item/natural/glass = 1,
-				/obj/item/roguegear = 1)
+				/obj/item/roguegear/bronze = 1)
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
@@ -99,7 +99,7 @@
 	name = "shutters"
 	result = /obj/structure/bars/passage/shutter
 	reqs = list(/obj/item/ingot/iron = 1,
-					/obj/item/roguegear = 1)
+					/obj/item/roguegear/wood = 1)
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
