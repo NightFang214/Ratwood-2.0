@@ -455,6 +455,10 @@
 			cloak = /obj/item/clothing/cloak/templar/xylix
 		if (/datum/patron/divine/pestra)
 			cloak = /obj/item/clothing/cloak/templar/pestra
+		if(/datum/patron/inhumen/zizo)
+			cloak = /obj/item/clothing/cloak/cape/crusader
+			H.mind?.AddSpell(new /obj/effect/proc_holder/spell/invoked/minion_order)
+			H.mind?.AddSpell(new /obj/effect/proc_holder/spell/invoked/gravemark)
 		else
 			cloak = /obj/item/clothing/cloak/cape/crusader
 	if(H.mind)
