@@ -10,9 +10,10 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ACCEPTED_RACES
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "Either a fresh lowborn recruit or a veteran of the now defunct bog guard, you have been assigned to the lowtown fortress. \
+	tutorial = "Either a fresh lowborn recruit or paying off your crimes with a mandated tour of duty, you have been assigned to the lowtown fortress. \
 	You have a roof over your head, meagre coin in your pocket, and a thankless job protecting the outskirts of town against what lurks beyond.\
-	The Bastion must not fall."
+	While typically under less supervision than the Men at Arms stationed in hightown, you will be called upon as members of the garrison by the Marshal or the Crown. \
+	Serve their will as the first line of defence from threats beyond the borders of civilisation, hold the vanguard fortress, and try to survive another day."
 	display_order = JDO_TOWNGUARD
 	whitelist_req = TRUE
 
