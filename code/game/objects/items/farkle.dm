@@ -106,8 +106,8 @@
 		return
 
 	if(joiner in players)
-		// Already in - let them start early or leave
-		var/list/opts = list("Leave game")
+		// Already in - let them start early, leave, or cancel the whole game
+		var/list/opts = list("Leave game", "Cancel game")
 		if(players.len >= 2)
 			opts += "Start game now"
 		var/choice = input(joiner, "You are already in the lobby. ([players.len]/[max_players] players)", "Farkle") as null|anything in opts
@@ -117,8 +117,9 @@
 			players -= joiner
 			game_bag.visible_message(span_notice("[joiner] left the pre-game lobby. ([players.len]/[max_players])"))
 			if(!players.len)
-				game_bag.active_game = null
-				qdel(src)
+				cancel_game(joiner)
+		else if(choice == "Cancel game")
+			cancel_game(joiner)
 		return
 
 	if(players.len >= max_players)
@@ -130,6 +131,13 @@
 	game_bag.visible_message(span_notice("[joiner] joined the Farkle game! ([players.len]/[max_players] players)"))
 	if(players.len >= max_players)
 		start_game()
+
+
+// --- Cancel Game ---
+/datum/farkle_game/proc/cancel_game(mob/living/canceller)
+	game_bag.visible_message(span_warning("[canceller] has cancelled the Farkle game!"))
+	game_bag.active_game = null
+	qdel(src)
 
 
 // --- Game Start ---
@@ -178,12 +186,21 @@
 		to_chat(user, span_notice("Current scores: [get_score_display()]"))
 		return
 
-	if(user != players[current_player_index])
-		to_chat(user, span_notice("It's not your turn. Scores: [get_score_display()]"))
-		return
-
 	if(busy)
 		to_chat(user, span_notice("Please wait a moment..."))
+		return
+
+	if(user != players[current_player_index])
+		// Not their turn - offer a cancel option so someone can still bail out
+		var/choice = input(user, "It's not your turn. Scores: [get_score_display()]", "Farkle") as null|anything in list("OK", "Cancel game")
+		if(choice == "Cancel game")
+			cancel_game(user)
+		return
+
+	// Active player options
+	var/choice = input(user, "It's your turn! Scores: [get_score_display()]", "Farkle") as null|anything in list("Roll dice", "Cancel game")
+	if(choice == "Cancel game")
+		cancel_game(user)
 		return
 
 	do_roll(user)
