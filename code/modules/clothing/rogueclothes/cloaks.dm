@@ -2071,3 +2071,4 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/licensed-infraredbaron/onmob/cloaks.dmi'
 	icon_state = "citywatch_cape"
 	item_state = "citywatch_cape"
+	color = null
