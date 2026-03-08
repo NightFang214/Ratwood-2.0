@@ -1243,7 +1243,7 @@
 	if(ZMtop && ZMbottom)
 		return
 	
-	if(ZMtop && !ZMbottom)
+	if(ZMtop && ZMtop.has_turned && !ZMbottom)
 		if(prob(infection_probability))
 			var/answer = tgui_alert(top, "Spread HER gift?", "Please answer in [DisplayTimeText(200)]!", list("Yae","Nae"),200)
 			if(!answer || answer == "Nae")
@@ -1252,7 +1252,7 @@
 				bottom.zaids_check()
 		return
 
-	if(ZMbottom && !ZMtop)
+	if(ZMbottom && ZMbottom.has_turned && !ZMtop)
 		if(prob(infection_probability))
 			var/answer = tgui_alert(bottom, "Spread HER gift?", "Please answer in [DisplayTimeText(200)]!", list("Yae","Nae"),200)
 			if(!answer || answer == "Nae")
@@ -1260,7 +1260,7 @@
 			if(answer == "Yae")
 				top.zaids_check()
 		return
-///Making sure they're not any other antag or immune then applies zombie infection
+///Making sure there're not any other antag or immune, then applies zombie infection
 /mob/living/carbon/human/proc/zaids_check() 
 	if(!mind)
 		return
