@@ -78,25 +78,25 @@
 		STATKEY_PER = 1,//on the lookout for perps
 	)
 	subclass_skills = list(
-		/datum/skill/combat/maces = SKILL_LEVEL_JOURNEYMAN,//They're serviceable with all weapons but I really don't want them to get expert outside of maces - blunt weapons are the role's identity. It's not their job to kill people.
-		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/polearms = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/axes = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/whipsflails = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/crossbows = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/bows = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/slings = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,//moating practice
-		/datum/skill/misc/sneaking = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,//Chasin' suspects
-		/datum/skill/misc/tracking = SKILL_LEVEL_JOURNEYMAN,//Looking for Clues
+		/datum/skill/combat/maces = 3,//They're serviceable with all weapons but I really don't want them to get expert outside of maces - blunt weapons are the role's identity. It's not their job to kill people.
+		/datum/skill/combat/swords = 3,
+		/datum/skill/combat/polearms = 3,
+		/datum/skill/combat/axes = 3,
+		/datum/skill/combat/whipsflails = 3,
+		/datum/skill/combat/wrestling = 4,
+		/datum/skill/combat/unarmed = 4,
+		/datum/skill/combat/knives = 3,
+		/datum/skill/combat/shields = 3,
+		/datum/skill/combat/crossbows = 2,
+		/datum/skill/combat/bows = 2,
+		/datum/skill/combat/slings = 2,
+		/datum/skill/misc/climbing = 3,
+		/datum/skill/misc/swimming = 2,//moating practice
+		/datum/skill/misc/sneaking = 2,
+		/datum/skill/misc/reading = 1,
+		/datum/skill/misc/medicine = 1,
+		/datum/skill/misc/athletics = 4,//Chasin' suspects
+		/datum/skill/misc/tracking = 3,//Looking for Clues
 	)
 
 /datum/outfit/job/roguetown/guardsman/cityguard/pre_equip(mob/living/carbon/human/H)
@@ -110,11 +110,11 @@
 			if("Stunmace & Shield")
 				r_hand = /obj/item/rogueweapon/mace/stunmace
 				backl = /obj/item/rogueweapon/shield/heater
-				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/combat/maces, 4, TRUE)
 			if("Maul - 14STR Minimum")
 				r_hand = /obj/item/rogueweapon/mace/maul
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/combat/maces, 4, TRUE)
 			if("Crossbow")
 				r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 				backl = /obj/item/quiver/bolts

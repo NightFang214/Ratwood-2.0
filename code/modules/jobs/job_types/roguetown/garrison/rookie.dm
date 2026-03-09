@@ -31,7 +31,10 @@
 
 /datum/outfit/job/roguetown/rookie
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	gloves = /obj/item/clothing/gloves/roguetown/leather
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	belt = /obj/item/storage/belt/rogue/leather
+	head = /obj/item/clothing/head/roguetown/helmet/kettle
 	cloak = /obj/item/clothing/cloak/citywatch
 	id = /obj/item/scomstone/bad/garrison
 	job_bitflag = BITFLAG_GARRISON
@@ -55,34 +58,32 @@
 		STATKEY_END = 1,
 	)
 	subclass_skills = list(
-		/datum/skill/combat/shields = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/maces = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/polearms = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/crossbows = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/knives = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/tracking = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/craft/crafting, SKILL_LEVEL_NOVICE,
-		/datum/skill/craft/cooking, SKILL_LEVEL_NOVICE,
+		/datum/skill/combat/shields = 2,
+		/datum/skill/combat/maces = 3,
+		/datum/skill/combat/swords = 3,
+		/datum/skill/combat/polearms = 3,
+		/datum/skill/combat/crossbows = 2,
+		/datum/skill/combat/wrestling = 2,
+		/datum/skill/combat/unarmed = 2,
+		/datum/skill/combat/knives = 1,
+		/datum/skill/misc/swimming = 2,
+		/datum/skill/misc/climbing = 3,
+		/datum/skill/misc/athletics = 3,
+		/datum/skill/misc/reading = 1,
+		/datum/skill/misc/medicine = 2,
+		/datum/skill/misc/tracking = 2,
+		/datum/skill/craft/crafting, 1,
+		/datum/skill/craft/cooking, 1,
 	)
+
 /datum/outfit/job/roguetown/rookie/footman/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	H.verbs |= /mob/proc/haltyell_exhausting
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/iron
 	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 	neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
 	backr = /obj/item/storage/backpack/rogue/satchel
-	head = /obj/item/clothing/head/roguetown/helmet/kettle
 	backpack_contents = list(
 		/obj/item/rogueweapon/huntingknife/idagger,
 		/obj/item/storage/belt/rogue/pouch,
@@ -119,34 +120,31 @@
 		STATKEY_END = 1,
 	)
 	subclass_skills = list(
-		/datum/skill/combat/bows = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/crossbows = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/slings = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_NOVICE,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_NOVICE,
-		/datum/skill/combat/swords = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/maces = SKILL_LEVEL_APPRENTICE,//clobbering criminals
-		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/tracking = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/craft/crafting, SKILL_LEVEL_NOVICE,
-		/datum/skill/craft/cooking, SKILL_LEVEL_NOVICE,
+		/datum/skill/combat/bows = 3,
+		/datum/skill/combat/crossbows = 3,
+		/datum/skill/combat/slings = 2,
+		/datum/skill/combat/wrestling = 1,
+		/datum/skill/combat/unarmed = 1,
+		/datum/skill/combat/swords = 2,
+		/datum/skill/combat/maces = 2,//clobbering criminals
+		/datum/skill/combat/knives = 3,
+		/datum/skill/misc/swimming = 2,
+		/datum/skill/misc/climbing = 4,
+		/datum/skill/misc/athletics = 3,
+		/datum/skill/misc/reading = 1,
+		/datum/skill/misc/medicine = 2,
+		/datum/skill/misc/tracking = 2,
+		/datum/skill/craft/crafting, 1,
+		/datum/skill/craft/cooking, 1,
 	)
 
 /datum/outfit/job/roguetown/rookie/skirmisher/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	H.verbs |= /mob/proc/haltyell_exhausting
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/iron
 	backr = /obj/item/storage/backpack/rogue/satchel
 	neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
-	head = /obj/item/clothing/head/roguetown/helmet/kettle
 	beltl = /obj/item/rogueweapon/mace/cudgel
 	backpack_contents = list(
 		/obj/item/rogueweapon/huntingknife/idagger,
@@ -166,7 +164,7 @@
 			if("Crossbow")
 				beltr = /obj/item/quiver/bolts
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-			if("Bow") // They can head down to the armory to sideshift into one of the other bows.
+			if("Bow")
 				beltr = /obj/item/quiver/arrows
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 			if("Sling")
@@ -180,4 +178,4 @@
 			if("Medium Armor")
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
 				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-				
+
