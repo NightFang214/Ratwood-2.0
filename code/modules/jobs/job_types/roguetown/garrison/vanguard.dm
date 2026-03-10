@@ -26,7 +26,7 @@
 	round_contrib_points = 2
 	cmode_music = 'sound/music/combat_vigilante.ogg'
 	social_rank = SOCIAL_RANK_PEASANT
-	job_traits = list(TRAIT_WOODSMAN, TRAIT_SURVIVAL_EXPERT)
+	job_traits = list(TRAIT_SURVIVAL_EXPERT)
 	job_subclasses = list(
 		/datum/advclass/vanguard/footman,
 		/datum/advclass/vanguard/archer
