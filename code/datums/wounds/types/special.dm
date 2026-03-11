@@ -533,29 +533,61 @@
 	clotting_threshold = 0
 	clotting_rate = 0
 	bypass_bloody_wound_check = TRUE
+	var/cure_timer
 
 /datum/wound/heatstroke/on_mob_gain(mob/living/affected)
 	. = ..()
+	cure_timer = null
 	owner.overlay_fullscreen("heatstroke", /atom/movable/screen/fullscreen/heatstroke)
 
 /datum/wound/heatstroke/on_life()
 	. = ..()
+
 	if(!iscarbon(owner))
 		return
-	var/mob/living/carbon/carbon_owner = owner
-	if(!carbon_owner.stat && prob(5))
+
+	var/mob/living/carbon/C = owner
+
+	if(!C.stat && prob(5))
 		if(prob(5))
-			carbon_owner.vomit(1, blood = FALSE, stun = TRUE)
+			C.vomit(1, blood = FALSE, stun = TRUE)
 		to_chat(owner, span_warning("The world is spinning!"))
-		carbon_owner.Dizzy(10)
+		C.Dizzy(10)
+
+	// If temperature is normal, start cure timer
+	if(C.bodytemperature <= BODYTEMP_NORMAL_MAX)
+		if(!cure_timer)
+			to_chat(C, span_notice("The heat begins to slowly fade from my body..."))
+			cure_timer = addtimer(CALLBACK(src, PROC_REF(cure_heatstroke)), 2 MINUTES)
+
+	// If overheating again, cancel cure timer
+	else
+		if(cure_timer)
+			deltimer(cure_timer)
+			cure_timer = null
 
 /datum/wound/heatstroke/on_mob_loss()
 	. = ..()
+	if(cure_timer)
+		deltimer(cure_timer)
+		cure_timer = null
+
 	if(!iscarbon(owner))
 		return
-	var/mob/living/carbon/carbon_owner = owner
+
+	var/mob/living/carbon/C = owner
 	to_chat(owner, span_warning("The world has stopped spinning."))
-	carbon_owner.set_dizziness(0)
+	C.set_dizziness(0)
+
+/datum/wound/heatstroke/proc/cure_heatstroke()
+	if(!owner)
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+	to_chat(H, span_notice("The world finally stops spinning as the heat leaves me."))
+	H.clear_fullscreen("heatstroke")
+	qdel(src)
 
 /datum/wound/frostbite
 	name = "frostbite"

@@ -273,6 +273,16 @@
 					wash_atom(user, CLEAN_STRONG)
 					user.remove_stress(/datum/stressevent/sewertouched)
 				playsound(user, pick(wash), 100, FALSE)
+				if(temperature < 250 && L.bodytemperature > BODYTEMP_COLD_LEVEL_ONE_MAX + 75)	//washing yourself helps to cool you off.
+					L.adjust_bodytemperature(-75)
+					L.update_health_hud()
+				if(temperature >= 300)	//bathhouses, predominantly
+					if(L.bodytemperature > BODYTEMP_NORMAL_MIN + 75)	//washing yourself helps to cool you off.
+						L.adjust_bodytemperature(-75)
+						L.update_health_hud()
+					if(L.bodytemperature < BODYTEMP_NORMAL_MAX - 75)	//washing yourself helps to cool you off.
+						L.adjust_bodytemperature(-75)
+						L.update_health_hud()
 				if(istype(src,/turf/open/water/sewer) || istype(src,/turf/open/water/swamp) || istype(src, /turf/open/water/sewer))
 					if (istype(src, /turf/open/water/sewer))
 						user.add_stress(/datum/stressevent/sewertouched)
@@ -303,16 +313,6 @@
 					var/mob/living/carbon/C = user
 					C.update_inv_hands()
 				playsound(user, pick(wash), 100, FALSE)
-		if(temperature < 250 && L.bodytemperature > BODYTEMP_COLD_LEVEL_ONE_MAX + 50)	//washing yourself helps to cool you off.
-			L.adjust_bodytemperature(-75)
-			L.update_health_hud()
-		if(temperature >= 300)	//bathhouses, predominantly
-			if(L.bodytemperature > BODYTEMP_NORMAL_MIN + 75)	//washing yourself helps to cool you off.
-				L.adjust_bodytemperature(-75)
-				L.update_health_hud()
-			if(L.bodytemperature < BODYTEMP_NORMAL_MAX - 75)	//washing yourself helps to cool you off.
-				L.adjust_bodytemperature(-75)
-				L.update_health_hud()
 		return
 	..()
 

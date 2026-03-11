@@ -115,6 +115,20 @@
 	results = list(/datum/reagent/water/gross = 2)
 	required_reagents = list(/datum/reagent/water/gross = 1, /datum/reagent/water = 1)
 
+/datum/reagent/water/reaction_mob(mob/living/M, method = TOUCH, reac_volume)
+	if(!isliving(M))
+		return ..()
+
+	if(method in list(TOUCH, VAPOR, PATCH))
+		var/mob/living/L = M
+
+		// 120u of water cools 100 temperature- or one level of temperature (A bucket/stonepot)
+		var/cooling = reac_volume * (100 / 120)
+
+		L.bodytemperature = max(L.bodytemperature - cooling, BODYTEMP_COLD_LEVEL_ONE_MAX)	//Will never put someone at level 2 cold
+
+	return ..()
+
 #define WATER_BLOOD_RESTORE 5
 /datum/reagent/water/on_mob_life(mob/living/carbon/M)
 	if(ishuman(M))
