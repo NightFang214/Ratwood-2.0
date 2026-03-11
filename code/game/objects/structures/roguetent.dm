@@ -1,30 +1,43 @@
 /obj/structure/roguetent
-    name = "tent door"
-    desc = "A door made of sturdy fabric stretched over wooden frames. Shift-click to pack up the tent."
-    icon = 'icons/turf/roguewall.dmi'
+    parent_type = /obj/structure/tent_component
+    name = "tent flap"
+    icon = 'icons/turf/roguewall.dmi' 
     icon_state = "tent_door1"
-    layer = TABLE_LAYER
+    layer = WALL_OBJ_LAYER // High priority layer
+    plane = GAME_PLANE
     density = TRUE
-    anchored = TRUE
     opacity = TRUE
-    max_integrity = 100
     var/base_state = "tent_door"
-    var/obj/item/tent_kit/parent_tent // NEW: Add this here to fix the "undefined field" error
-    blade_dulling = DULLING_BASHCHOP
-    attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
-    destroy_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
 
-/obj/structure/roguetent/Initialize(mapload)
-    update_icon()
-    ..()
-
-// NEW: Add the Shift-Click interaction so you can dismantle from the door too
-/obj/structure/roguetent/ShiftClick(mob/user)
-    if(parent_tent && parent_tent.assembled)
-        if(user in range(1, src))
-            parent_tent.disassemble_tent(user)
-            return TRUE
+/obj/structure/roguetent/update_icon()
+    // Safety check: ensure these states actually exist in your DMI
+    if(density)
+        icon_state = "[base_state][pick("1","2")]"
+    else
+        icon_state = "[base_state]0"
+    
+    // Final fallback if the icon_state logic fails
+    if(!icon_state)
+        icon_state = "tent_door1"
     return ..()
+
+// Shift-Click interaction merged here cleanly
+/obj/structure/roguetent/ShiftClick(mob/user)
+    if(!parent_tent || !parent_tent.assembled) return ..()
+    
+    var/turf/T = get_turf(user)
+    if(!T || !T.pseudo_roof)
+        to_chat(user, span_warning("You can only dismantle the tent from the inside!"))
+        return TRUE
+
+    if(get_dist(user, src) > 1) 
+        to_chat(user, span_warning("You are too far away!"))
+        return TRUE
+
+    var/confirm = alert(user, "Are you sure you want to pack up the [parent_tent.name]?", "Dismantle", "Yes", "No")
+    if(confirm == "Yes" && get_dist(user, src) <= 1)
+        parent_tent.disassemble_tent(user)
+    return TRUE
 
 /obj/structure/roguetent/update_icon()
     if(density)
