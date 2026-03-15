@@ -122,7 +122,7 @@
 	subclass_skills = list(
 		/datum/skill/combat/bows = 3,
 		/datum/skill/combat/crossbows = 3,
-		/datum/skill/combat/slings = 2,
+		/datum/skill/combat/slings = 3,
 		/datum/skill/combat/wrestling = 1,
 		/datum/skill/combat/unarmed = 1,
 		/datum/skill/combat/swords = 2,
