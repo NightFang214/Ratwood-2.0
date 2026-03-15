@@ -928,6 +928,25 @@
 	desc = "I've devoured a stone."
 	icon_state = "buff"
 
+/datum/status_effect/buff/mount_apple_healing
+	id = "mount_apple_healing"
+	duration = 8 SECONDS
+	var/healing_on_tick = 1
+
+/datum/status_effect/buff/mount_apple_healing/on_creation(mob/living/new_owner, new_healing_on_tick)
+	healing_on_tick = new_healing_on_tick
+	return ..()
+
+/datum/status_effect/buff/mount_apple_healing/tick()
+	var/obj/effect/temp_visual/heal/H = new /obj/effect/temp_visual/heal_rogue(get_turf(owner))
+	H.color = "#FF6666"
+	owner.adjustBruteLoss(-healing_on_tick, 0)
+	owner.adjustFireLoss(-healing_on_tick, 0)
+	owner.adjustOxyLoss(-healing_on_tick, 0)
+	owner.adjustToxLoss(-healing_on_tick, 0)
+	owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, -healing_on_tick)
+	owner.adjustCloneLoss(-healing_on_tick, 0)
+
 /datum/status_effect/buff/healing/on_remove()
 	owner.remove_filter(MIRACLE_HEALING_FILTER)
 	owner.update_damage_hud()

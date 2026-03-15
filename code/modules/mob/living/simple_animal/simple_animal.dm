@@ -231,12 +231,17 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		..()
 		return
 	else
+		if(can_saddle && istype(O, /obj/item/reagent_containers/food/snacks/grown/apple) && has_status_effect(/datum/status_effect/buff/mount_apple_healing))
+			to_chat(user, span_warning("[src] is still chewing on the last apple! Try again in a few seconds when they look hungry."))
+			return
 		if(!stat)
 			user.visible_message(span_info("[user] hand-feeds [O] to [src]."), span_notice("I hand-feed [O] to [src]."))
 			playsound(loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
 			qdel(O)
 			food = min(food + 30, 100)
 			adjustHealth(-rand(10,20))
+			if(can_saddle && istype(O, /obj/item/reagent_containers/food/snacks/grown/apple))
+				apply_status_effect(/datum/status_effect/buff/mount_apple_healing, 1)
 			if(tame && owner == user)
 				return
 			var/realchance = tame_chance
