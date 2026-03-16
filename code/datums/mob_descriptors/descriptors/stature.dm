@@ -377,9 +377,9 @@
 		if(SHE_HER_M)
 			return "huntress"
 		if(HE_HIM)
-			return "hunter"
+			return "huntsman"
 		if(HE_HIM_F)
-			return "hunter"
+			return "huntsman"
 		if(THEY_THEM)
 			return "hunter"
 		if(THEY_THEM_F)
