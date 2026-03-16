@@ -196,7 +196,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/ornate
 	name = "psydonic half-plate"
-	desc = "A beautiful steel cuirass, fitted with tassets and pauldrons for additional coverage. Lesser clerics of Psydon oft-decorate these sets with dyed cloths, so that those who're wounded can still find salvation in the madness of battle. </br>'..the thrumbing of madness, to think that your suffering was all-for-naught to Adonai's sacrifical lamb..' </br>... </br>With some blessed silver and a blacksmith's assistance, I can turn this half-plate into a set of full-plate armor."
+	desc = "A beautiful steel cuirass, fitted with tassets and pauldrons for additional coverage. Lesser clerics of Psydon oft-decorate these sets with dyed cloths, so that those who're wounded can still find salvation in the madness of battle. </br>'..the thrumbing of madness, to think that your suffering was all-for-naught to Adonai's sacrificial lamb..' </br>... </br>With some blessed silver and a blacksmith's assistance, I can turn this half-plate into a set of full-plate armor."
 	icon_state = "ornatehalfplate"
 	smeltresult = /obj/item/ingot/silverblessed
 	body_parts_covered = COVERAGE_FULL // Less durability than proper plate, more expensive to manufacture, and accurate to the sprite.

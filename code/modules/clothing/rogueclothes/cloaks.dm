@@ -1352,7 +1352,7 @@
 
 /obj/item/clothing/cloak/thief_cloak
 	name = "rapscallion's shawl"
-	desc = "A simple shawl clapsed with an ersatz fastener. Practical and functional, though the fabric is rough and wearing bare."
+	desc = "A simple shawl clasped with an ersatz fastener. Practical and functional, though the fabric is rough and wearing bare."
 	icon_state = "thiefcloak"
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 	color = CLOTHING_ORANGE

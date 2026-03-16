@@ -180,6 +180,11 @@
 	name = "grand fireplace"
 	healing_range = 6
 
+/obj/machinery/light/rogue/campfire/fireplace/crafted
+	density = FALSE
+	pixel_y = 32
+	cookonme = TRUE
+
 /obj/machinery/light/rogue/candle
 	name = "candles"
 	desc = "Tiny flames flicker to the slightest breeze and offer enough light to see."
