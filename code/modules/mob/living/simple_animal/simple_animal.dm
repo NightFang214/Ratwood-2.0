@@ -1004,6 +1004,10 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 /mob/living/simple_animal/hostile/user_buckle_mob(mob/living/M, mob/user)
 	if(user != M)
 		return
+	if(!in_range(user, src) || !isturf(user.loc) || user.incapacitated() || M.anchored)
+		return FALSE
+	if(!(M.mobility_flags & MOBILITY_STAND))
+		return FALSE
 	var/datum/component/riding/riding_datum = GetComponent(/datum/component/riding)
 	if(riding_datum)
 		var/time2mount = 12
@@ -1024,9 +1028,18 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 //			if(A != src && A != M && A.density)
 //				return
 		M.forceMove(get_turf(src))
+		var/force_buckle = (M == user && M.cmode)
+		if(!buckle_mob(M, force_buckle, FALSE))
+			return FALSE
+		if(M == user)
+			M.visible_message(span_notice("[M] [buckleverb]s on [src]."), span_notice("I [buckleverb] on [src]."))
+		else
+			M.visible_message(span_warning("[user] [buckleverb]s [M] on [src]!"), span_warning("[user] [buckleverb]s me on [src]!"))
+		add_fingerprint(user)
 		if(ssaddle)
 			playsound(src, 'sound/foley/saddlemount.ogg', 100, TRUE)
-	..()
+	else
+		return ..()
 	if(ishuman(M) && buckled_mobs && buckled_mobs.len < max_buckled_mobs)
 		var/mob/living/carbon/human/primary_rider = M
 		for(var/mob/living/passenger in primary_rider.buckled_mobs.Copy())
@@ -1037,6 +1050,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			primary_rider.unbuckle_mob(passenger, TRUE)
 			buckle_mob(passenger, TRUE, FALSE)
 	update_icon()
+	return TRUE
 
 /mob/living/simple_animal/hostile
 	var/do_footstep = FALSE
