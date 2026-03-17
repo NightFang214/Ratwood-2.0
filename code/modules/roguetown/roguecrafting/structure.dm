@@ -1142,6 +1142,15 @@
 	craftsound = 'sound/foley/Building-01.ogg'
 	ontile = TRUE
 
+/datum/crafting_recipe/roguetown/structure/pillory
+	name = "pillory"
+	result = /obj/structure/pillory
+	reqs = list(/obj/item/ingot/iron = 1, /obj/item/grown/log/tree/small = 1)
+	craftdiff = 2
+	verbage = "constructs"
+	craftsound = 'sound/foley/Building-01.ogg'
+	ontile = TRUE
+
 // Sofas and other furnishing
 
 /datum/crafting_recipe/roguetown/structure/couchleft
