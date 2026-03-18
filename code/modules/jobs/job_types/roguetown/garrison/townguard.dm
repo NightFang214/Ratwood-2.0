@@ -111,7 +111,7 @@
 		switch(weapon_choice)
 			if("Stunmace & Shield")
 				r_hand = /obj/item/rogueweapon/mace/stunmace
-				backl = /obj/item/rogueweapon/shield/iron
+				backl = /obj/item/rogueweapon/shield/iron/citywatch
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, 4, TRUE)
 			if("Polehammer")
 				r_hand = /obj/item/rogueweapon/eaglebeak
@@ -145,9 +145,13 @@
 
 
 #define CLOTHING_CITYWATCH		"#557d8f"
+#define CLOTHING_CITYWATCHLIGHT	"#b0f1f5"
 
 /obj/item/clothing/head/roguetown/helmet/kettle/citywatch
 	color = CLOTHING_CITYWATCH
 
 /obj/item/clothing/wrists/roguetown/bracers/citywatch
 	color = CLOTHING_CITYWATCH
+
+/obj/item/rogueweapon/shield/iron/citywatch
+	color = CLOTHING_CITYWATCHLIGHT
