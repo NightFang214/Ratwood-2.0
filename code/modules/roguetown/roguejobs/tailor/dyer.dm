@@ -72,6 +72,13 @@ GLOBAL_LIST_INIT(pridelist, list(
 			/obj/item/flowercrown,
 			/obj/item/legwears,
 			/obj/item/undies
+			/obj/item/caparison,
+			/obj/item/reagent_containers/glass/bottle/clayvase,
+			/obj/item/reagent_containers/glass/bottle/clayfancyvase,
+			/obj/item/reagent_containers/glass/cup/claycup,
+			/obj/item/reagent_containers/glass/bottle/claybottle,
+			/obj/item/roguestatue/clay,
+			/obj/item/roguestatue/glass
 			)
 	var/list/used_colors
 
