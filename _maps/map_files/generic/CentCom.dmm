@@ -4730,6 +4730,16 @@
 	first_time_text = null;
 	name = "Wretched Caves"
 	})
+"vu" = (
+/obj/structure/mineral_door/wood/donjon{
+	locked = 1;
+	lockid = "dungeon";
+	dir = 8;
+	max_integrity = 5000;
+	name = "Pillory"
+	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/dietroyt)
 "vv" = (
 /obj/structure/stairs{
 	dir = 1
@@ -16813,7 +16823,7 @@ Qt
 Qt
 Qt
 Qt
-Yj
+vu
 zd
 Pk
 Qt
