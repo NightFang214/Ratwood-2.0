@@ -120,7 +120,7 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
 	max_integrity = 300
 
-	interrupt_damount = 1
+	repair_time = 20
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/weak
 	name = "tough skin"
