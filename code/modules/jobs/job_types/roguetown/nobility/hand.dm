@@ -86,6 +86,10 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/hand_f
 	else if(should_wear_masc_clothes(H))
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/hand_m
+	if(SSmapping.config.map_name == "Rockhill")
+		armor = /obj/item/clothing/suit/roguetown/armor/leather/newkeep/hand
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/formal
+		head = null
 	backpack_contents = list(
 		/obj/item/rogueweapon/huntingknife/idagger/dtace = 1,//You don't get killer's ice for this because you're the gross swordsmaster and I HATE YOU!!!!
 		/obj/item/rogueweapon/scabbard/sheath = 1,
