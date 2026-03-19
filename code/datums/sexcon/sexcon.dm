@@ -340,6 +340,8 @@
 /datum/sex_controller/proc/try_resist_orgasm()
 	if(!HAS_TRAIT(user, TRAIT_PSYDONIAN_GRIT) || !prob(40))
 		return FALSE
+	if(user.client.prefs.edging == FALSE)
+		return FALSE
 	var/resist_msg = pick(
 		"[user] trembles and hisses, \"With every broken bone, I swore I lyved... HE hath gifted me the strength to ENDURE!\"",
 		"[user] bows [user.p_their()] head and forces the urge back, clinging to faith as the night closes in.",

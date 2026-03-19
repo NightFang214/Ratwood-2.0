@@ -198,6 +198,17 @@
 				call(src, "modular_handle_extreme_erp_toggle_disable")()
 			to_chat(src, "Extreme ERP content disabled in the ERP panel.")
 
+/client/verb/toggle_edging() // Toggles edging content in the ERP panel, for psydonites who clearly can't ENDURE.
+	set category = "Options"
+	set name = "Toggle Edging Content"
+	if(prefs)
+		prefs.edging = !prefs.edging
+		prefs.save_preferences()
+		if(prefs.edging)
+			to_chat(src, "You ENDVRE through orgasms.")
+		else
+			to_chat(src, "You will no longer ENDVRE through orgasms.")
+
 /client/verb/toggle_compliance_notifs() // The messages need to be on-by-default while this is in its early stages.
 	set category = "Options"
 	set name = "Toggle Compliance Notifs"

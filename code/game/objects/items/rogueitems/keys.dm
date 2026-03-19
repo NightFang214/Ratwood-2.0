@@ -678,6 +678,15 @@
 		return handled
 	return ..()
 
+// Spectral lockpick from the Lesser Knock spell: attempt chastity picking first.
+// If the target has no chastity device (or isn't human), fall through to ..() which triggers the
+// touch_attack dispel logic — so the spell still cancels correctly on non-device targets.
+/obj/item/melee/touch_attack/lesserknock/attack(mob/M, mob/user, def_zone)
+	var/handled = modular_chastity_attack(M, user, def_zone)
+	if(!isnull(handled))
+		return handled
+	return ..()
+
 
 //custom key blank
 /obj/item/customblank //i'd prefer not to make a seperate item for this honestly
