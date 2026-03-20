@@ -43,7 +43,7 @@
 	var/swim_skill = FALSE
 	nomouseover = FALSE
 	var/swimdir = FALSE
-	temperature = 200
+	temperature = 210
 
 /turf/open/water/Initialize(mapload)
 	.  = ..()
