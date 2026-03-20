@@ -3016,6 +3016,7 @@
 #include "modular_azurepeak\virtues\size.dm"
 #include "modular_azurepeak\virtues\thief.dm"
 #include "modular_azurepeak\virtues\utility.dm"
+#include "modular_azurepeak\virtues\saddleborn.dm"
 #include "modular_hearthstone\code\datums\accents.dm"
 #include "modular_hearthstone\code\game\objects\effects\track.dm"
 #include "modular_hearthstone\code\game\objects\items\signal_horn.dm"

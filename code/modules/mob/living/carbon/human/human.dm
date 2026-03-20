@@ -830,6 +830,13 @@
 /mob/living/carbon/human/proc/can_be_firemanned(mob/living/carbon/target)
 	return (ishuman(target) && !(target.mobility_flags & MOBILITY_STAND))
 
+/mob/living/carbon/human/get_mob_buckling_height(mob/seat)
+	if(istype(seat, /mob/living/simple_animal))
+		var/mob/living/simple_animal/animal_mount = seat
+		if(animal_mount.GetComponent(/datum/component/riding))
+			return 0
+	return ..()
+
 /mob/living/carbon/human/proc/fireman_carry(mob/living/carbon/target)
 	var/carrydelay = 50 //if you have latex you are faster at grabbing
 
