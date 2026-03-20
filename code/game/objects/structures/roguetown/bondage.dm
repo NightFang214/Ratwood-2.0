@@ -143,6 +143,20 @@
 	. = ..()
 	init_connect_loc_element()
 
+/obj/structure/bondage/gloryhole/MiddleMouseDrop_T(atom/movable/dragged, mob/living/user)
+	if(!has_buckled_mobs() || !ishuman(dragged))
+		return ..()
+	var/mob/living/buckled_user = locate() in buckled_mobs
+	if(isnull(buckled_user) || !istype(buckled_user)) // nobody's home, abort
+		return ..()
+	if((buckled_user == user) && ishuman(user) && ishuman(dragged) && !user.mmb_intent) // if buckled mob middle click dragged onto non-gloryhole buckled mob, open sexcon
+		dragged.MiddleMouseDrop_T(user, user)
+		return
+	if((dragged == user) && ishuman(user) && !user.mmb_intent) // if non-buckled mob middle click dragged onto gloryhole buckled mob, open sexcon
+		buckled_user.MiddleMouseDrop_T(user, user)
+		return
+	return ..()
+
 /obj/structure/bondage/gloryhole/proc/init_connect_loc_element()
 	var/static/list/loc_connections = list(COMSIG_ATOM_EXIT = PROC_REF(on_exit))
 	AddElement(/datum/element/connect_loc, loc_connections)
