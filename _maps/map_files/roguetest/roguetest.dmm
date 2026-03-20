@@ -130,9 +130,8 @@
 /turf/open/floor/rogue/hay,
 /area/rogue/indoors)
 "dE" = (
-/obj/machinery/light/rogue/firebowl/stump,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors)
+/turf/closed/wall/mineral/rogue/wood,
+/area/rogue/outdoors)
 "dN" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -316,6 +315,12 @@
 /obj/machinery/light/rogue/candle/l,
 /turf/open/floor/rogue/hay,
 /area/rogue/indoors)
+"mg" = (
+/obj/structure/stairs{
+	dir = 1
+	},
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors)
 "mq" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/grass,
@@ -800,6 +805,9 @@
 /obj/item/quiver/arrows,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
+"xw" = (
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue)
 "xy" = (
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors)
@@ -915,6 +923,12 @@
 "AX" = (
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors)
+"Bh" = (
+/obj/structure/stairs{
+	dir = 1
+	},
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue)
 "Bp" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -1184,6 +1198,12 @@
 /obj/item/storage/roguebag,
 /turf/open/floor/rogue/blocks/newstone/alt,
 /area/rogue/indoors)
+"Lm" = (
+/obj/structure/fluff/customsign{
+	name = "Jumping Test Zone"
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "Ln" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog/north)
@@ -1311,6 +1331,10 @@
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors)
+"NT" = (
+/obj/machinery/light/roguestreet/orange/midlamp,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "Of" = (
 /obj/structure/fluff/railing/corner/north_east,
 /turf/closed/mineral/random/rogue,
@@ -1487,6 +1511,10 @@
 /obj/item/kitchen/rollingpin,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors)
+"UJ" = (
+/obj/machinery/light/roguestreet/orange/midlamp,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors)
 "UL" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -1616,6 +1644,10 @@
 "XU" = (
 /obj/item/rogueweapon/shovel/small,
 /turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
+"YA" = (
+/obj/machinery/light/roguestreet/orange/midlamp,
+/turf/open/floor/rogue/grass,
 /area/rogue/outdoors)
 "YT" = (
 /obj/structure/table/wood{
@@ -2242,7 +2274,7 @@ WM
 rT
 rT
 rT
-vq
+mq
 Rk
 Rk
 Rk
@@ -2292,9 +2324,9 @@ zo
 zo
 zo
 yK
-rT
-rT
-vq
+yK
+dE
+mg
 Rk
 Rk
 Rk
@@ -2345,7 +2377,7 @@ yK
 yK
 yK
 yK
-rT
+Lm
 rT
 Eu
 Eu
@@ -2906,7 +2938,7 @@ zo
 wQ
 yK
 vq
-mq
+vq
 vq
 vq
 eg
@@ -2958,7 +2990,7 @@ cK
 yK
 yK
 rT
-vq
+YA
 vq
 vq
 rT
@@ -3162,11 +3194,11 @@ Du
 MT
 xy
 xy
-xy
+UJ
 yK
 yK
 yK
-rT
+NT
 rT
 rT
 rT
@@ -3320,9 +3352,9 @@ xy
 xy
 CZ
 CZ
-dE
+CZ
 rT
-rT
+NT
 rT
 rT
 rT
@@ -4893,8 +4925,8 @@ Px
 Px
 Px
 Px
-Px
-Px
+xw
+Bh
 Px
 Px
 Px
