@@ -138,7 +138,7 @@
 		if("Partizan")
 			r_hand = /obj/item/rogueweapon/spear/partizan
 		if("Glaive")
-			/obj/item/rogueweapon/halberd/glaive
+			r_hand = /obj/item/rogueweapon/halberd/glaive
 		else //In case they DC or don't choose close the panel, etc
 			r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
 
