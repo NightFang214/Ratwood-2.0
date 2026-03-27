@@ -417,7 +417,7 @@
 	id = "retreat"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/order/heartfelt/retreat
 	effectedstats = list(STATKEY_SPD = 3)
-	duration = 30 SECONDS
+	duration = 1 MINUTES
 
 /datum/status_effect/buff/order/heartfelt/retreat/on_apply()
 	. = ..()
